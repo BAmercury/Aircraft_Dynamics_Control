@@ -1,0 +1,317 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Homework_1</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-01-14"><meta name="DC.source" content="Homework_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Problem 1 Part A: Determine Poles and Zeros of Transfer Function</a></li><li><a href="#4">Problem 1 Part B: Is the system stable?</a></li><li><a href="#10">Problem 1 Part C: Are there any pole-zero cancellations?</a></li><li><a href="#15">Problem 1 Part D: Convert to State Space Form</a></li><li><a href="#16">Problem 1 Part E: Plot step response</a></li></ul></div><h2 id="1">Problem 1 Part A: Determine Poles and Zeros of Transfer Function</h2><p>Generate transfer function in matlab</p><pre class="codeinput">num = [-0.01785 -1.38873 -0.0088536 -0.0079611]
+denom = [1 0.81066 1.32005596 0.01038106 0.0069483]
+tfsys = tf(num, denom)
+</pre><pre class="codeoutput">
+num =
+
+   -0.0179   -1.3887   -0.0089   -0.0080
+
+
+denom =
+
+    1.0000    0.8107    1.3201    0.0104    0.0069
+
+
+tfsys =
+ 
+   -0.01785 s^3 - 1.389 s^2 - 0.008854 s - 0.007961
+  --------------------------------------------------
+  s^4 + 0.8107 s^3 + 1.32 s^2 + 0.01038 s + 0.006948
+ 
+Continuous-time transfer function.
+
+</pre><p>Compute the poles of the transfer function model</p><pre class="codeinput">poles = pole(tfsys)
+</pre><pre class="codeoutput">
+poles =
+
+  -0.4030 + 1.0717i
+  -0.4030 - 1.0717i
+  -0.0023 + 0.0728i
+  -0.0023 - 0.0728i
+
+</pre><p>Compute the zeros of the transfer function model</p><pre class="codeinput">zeros = zero(tfsys)
+</pre><pre class="codeoutput">
+zeros =
+
+ -77.7937 + 0.0000i
+  -0.0032 + 0.0757i
+  -0.0032 - 0.0757i
+
+</pre><h2 id="4">Problem 1 Part B: Is the system stable?</h2><p>Looking at the roots of the denominator (the poles) we can generate pole-zero plot. For BIBO stability the poles must be in the left hand plane</p><pre class="codeinput">pzmap(tfsys)
+grid <span class="string">on</span>
+</pre><img vspace="5" hspace="5" src="Homework_1_01.png" style="width:560px;height:420px;" alt=""> <p>We can see here that our poles are not in the left hand plane, so this system is BIBO stable. BIBO stability also states that the roots of our transfer function must have negative real parts. We can observe:</p><pre class="codeinput">real(poles)
+</pre><pre class="codeoutput">
+ans =
+
+   -0.4030
+   -0.4030
+   -0.0023
+   -0.0023
+
+</pre><p>That our values are indeed negative real, as well as repeated roots Finally, we can plot an unit impulse response of our system to see if it goes to zero as time approaches infinity</p><pre class="codeinput">impulse(tfsys)
+</pre><img vspace="5" hspace="5" src="Homework_1_02.png" style="width:1280px;height:611px;" alt=""> <p>Our system reaches zero as time moves to infinity, so its BIBO stable in all cases</p><p>If we looked into internal stability, we see that with our repeated roots our system is not marginally stable. Since the real roots have a negative part however, we are asympototically stable.</p><p>What are our natural frequencies and damping ratio?</p><pre class="codeinput">[W, zeta] = damp(tfsys)
+</pre><pre class="codeoutput">
+W =
+
+    0.0728
+    0.0728
+    1.1450
+    1.1450
+
+
+zeta =
+
+    0.0320
+    0.0320
+    0.3520
+    0.3520
+
+</pre><h2 id="10">Problem 1 Part C: Are there any pole-zero cancellations?</h2><p>If we take our transfer function back to state space, and observe eigenvalues of our A matrix. We can see if any of the poles or zeros were cancelled</p><pre class="codeinput">[A, B, C, D] = tf2ss(num, denom)
+</pre><pre class="codeoutput">
+A =
+
+   -0.8107   -1.3201   -0.0104   -0.0069
+    1.0000         0         0         0
+         0    1.0000         0         0
+         0         0    1.0000         0
+
+
+B =
+
+     1
+     0
+     0
+     0
+
+
+C =
+
+   -0.0179   -1.3887   -0.0089   -0.0080
+
+
+D =
+
+     0
+
+</pre><p>Take our realization and put it into state space form</p><pre class="codeinput">sys = ss(A, B, C, D)
+</pre><pre class="codeoutput">
+sys =
+ 
+  A = 
+              x1         x2         x3         x4
+   x1    -0.8107      -1.32   -0.01038  -0.006948
+   x2          1          0          0          0
+   x3          0          1          0          0
+   x4          0          0          1          0
+ 
+  B = 
+       u1
+   x1   1
+   x2   0
+   x3   0
+   x4   0
+ 
+  C = 
+              x1         x2         x3         x4
+   y1   -0.01785     -1.389  -0.008854  -0.007961
+ 
+  D = 
+       u1
+   y1   0
+ 
+Continuous-time state-space model.
+
+</pre><p>Find poles and zeros</p><pre class="codeinput">ss_poles = pole(sys)
+ss_zeros = zero(sys)
+</pre><pre class="codeoutput">
+ss_poles =
+
+  -0.4030 + 1.0717i
+  -0.4030 - 1.0717i
+  -0.0023 + 0.0728i
+  -0.0023 - 0.0728i
+
+
+ss_zeros =
+
+ -77.7937 + 0.0000i
+  -0.0032 + 0.0757i
+  -0.0032 - 0.0757i
+
+</pre><p>Check eigenvalues of A as well to see if it matches with poles of our transfer function</p><pre class="codeinput">eig(A)
+</pre><pre class="codeoutput">
+ans =
+
+  -0.4030 + 1.0717i
+  -0.4030 - 1.0717i
+  -0.0023 + 0.0728i
+  -0.0023 - 0.0728i
+
+</pre><p>As we can see, there is no pole-zero cancellation</p><h2 id="15">Problem 1 Part D: Convert to State Space Form</h2><pre class="codeinput">sys = ss(A, B, C, D)
+</pre><pre class="codeoutput">
+sys =
+ 
+  A = 
+              x1         x2         x3         x4
+   x1    -0.8107      -1.32   -0.01038  -0.006948
+   x2          1          0          0          0
+   x3          0          1          0          0
+   x4          0          0          1          0
+ 
+  B = 
+       u1
+   x1   1
+   x2   0
+   x3   0
+   x4   0
+ 
+  C = 
+              x1         x2         x3         x4
+   y1   -0.01785     -1.389  -0.008854  -0.007961
+ 
+  D = 
+       u1
+   y1   0
+ 
+Continuous-time state-space model.
+
+</pre><h2 id="16">Problem 1 Part E: Plot step response</h2><pre class="codeinput">step(sys)
+</pre><img vspace="5" hspace="5" src="Homework_1_03.png" style="width:1280px;height:611px;" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Problem 1 Part A: Determine Poles and Zeros of Transfer Function
+% Generate transfer function in matlab
+num = [-0.01785 -1.38873 -0.0088536 -0.0079611]
+denom = [1 0.81066 1.32005596 0.01038106 0.0069483]
+tfsys = tf(num, denom)
+%% 
+% Compute the poles of the transfer function model
+poles = pole(tfsys)
+%%
+% Compute the zeros of the transfer function model
+zeros = zero(tfsys)
+
+
+%% Problem 1 Part B: Is the system stable?
+% Looking at the roots of the denominator (the poles) we can generate
+% pole-zero plot. For BIBO stability the poles must be in the left hand
+% plane
+pzmap(tfsys)
+grid on
+%%
+% We can see here that our poles are not in the left hand plane, so this
+% system is BIBO stable. BIBO stability also states that the roots of our
+% transfer function must have negative real parts. We can observe:
+real(poles)
+%%
+% That our values are indeed negative real, as well as repeated roots
+% Finally, we can plot an unit impulse response of our system to see if it
+% goes to zero as time approaches infinity
+impulse(tfsys)
+%%
+% Our system reaches zero as time moves to infinity, so its BIBO stable in
+% all cases
+%%
+% If we looked into internal stability, we see that with our repeated roots
+% our system is not marginally stable. Since the real roots have a negative
+% part however, we are asympototically stable. 
+
+%%
+% What are our natural frequencies and damping ratio?
+[W, zeta] = damp(tfsys)
+
+%% Problem 1 Part C: Are there any pole-zero cancellations?
+% If we take our transfer function back to state space, and observe
+% eigenvalues of our A matrix. We can see if any of the poles or zeros were
+% cancelled
+[A, B, C, D] = tf2ss(num, denom)
+%%
+% Take our realization and put it into state space form
+sys = ss(A, B, C, D)
+%%
+% Find poles and zeros
+ss_poles = pole(sys)
+ss_zeros = zero(sys)
+%%
+% Check eigenvalues of A as well to see if it matches with poles of our
+% transfer function
+eig(A)
+%%
+% As we can see, there is no pole-zero cancellation
+
+%% Problem 1 Part D: Convert to State Space Form
+sys = ss(A, B, C, D)
+
+%% Problem 1 Part E: Plot step response
+step(sys)
+
+
+##### SOURCE END #####
+--></body></html>
