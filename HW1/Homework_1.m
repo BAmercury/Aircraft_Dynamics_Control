@@ -9,10 +9,8 @@ poles = pole(tfsys)
 %%
 % Compute the zeros of the transfer function model
 zeros = zero(tfsys)
-
-
 %% Problem 1 Part B: Is the system stable?
-% Looking at the roots of the denominator (the poles) we can generate
+% Looking at the poles and zeros we can generate
 % pole-zero plot. For BIBO stability the poles must be in the left hand
 % plane
 pzmap(tfsys)
@@ -33,39 +31,15 @@ impulse(tfsys)
 %%
 % If we looked into internal stability, we see that with our repeated roots
 % of our transfer function our system is not marginally stable. Since the real roots have a negative
-% part however, we are asympototically stable. 
-
+% part however, we are asymptotically stable. 
 %%
 % What are our natural frequencies and damping ratio?
 [W, zeta] = damp(tfsys)
-
-%% Problem 1 Part C: Are there any pole-zero cancellations?
-% If we take our transfer function back to state space, and observe
-% eigenvalues of our A matrix. We can see if any of the poles or zeros were
-% cancelled
-[A, B, C, D] = tf2ss(num, denom)
-%%
-% Take our realization and put it into state space form
-sys = ss(A, B, C, D)
-%%
-% Find poles and zeros
-ss_poles = pole(sys)
-ss_zeros = zero(sys)
-%%
-% Check eigenvalues of A as well to see if it matches with poles of our
-% transfer function
-eig(A)
-%%
-% As we can see, there is no pole-zero cancellation
-
 %% Problem 1 Part D: Convert to State Space Form
+[A, B, C, D] = tf2ss(num, denom)
 sys = ss(A, B, C, D)
-
 %% Problem 1 Part E: Plot step response
 step(sys)
-
-
-
 %% Problem 2 Part A: Determine Poles and Zeros of Transfer Function
 % Generate transfer function in matlab
 num2= [-0.01782 -1.386396]
@@ -93,46 +67,37 @@ real(poles2)
 % Finally, we can plot an unit impulse response of our system to see if it
 % goes to zero as time approaches infinity
 impulse(tfsys2)
-
-% We can compare this with our original system
-hold on;
-impulse(tfsys)
 %%
 % Our system reaches zero as time moves to infinity, so its BIBO stable in
 % all cases
 %%
 % If we looked into internal stability, we see that with our repeated roots
 % of our transfer function our system is not marginally stable. Since the real roots have a negative
-% part however, we are asympototically stable. 
-
+% part however, we are asymptotically stable. 
 %%
 % What are our natural frequencies and damping ratio?
 [W, zeta] = damp(tfsys)
-
-%% Problem 2 Part C: Are there any pole-zero cancellations?
-% If we take our transfer function back to state space, and observe
-% eigenvalues of our A matrix. We can see if any of the poles or zeros were
-% cancelled
-[A2, B2, C2, D2] = tf2ss(num2, denom2)
-%%
-% Take our realization and put it into state space form
-sys2 = ss(A2, B2, C2, D2)
-%%
-% Find poles and zeros
-ss_poles = pole(sys2)
-ss_zeros = zero(sys2)
-%%
-% Check eigenvalues of A as well to see if it matches with poles of our
-% transfer function
-eig(A2)
-%%
-% As we can see, there is no pole-zero cancellation
 %% Problem 2 Part D: Convert to State Space Form
+[A2, B2, C2, D2] = tf2ss(num2, denom2)
 sys2 = ss(A2, B2, C2, D2)
-
 %% Problem 2 Part E: Plot step response
 step(sys2)
-hold on;
+%% Problem 3 Compare both systems
+% We can compare the responses between both systems
 step(sys)
-
-
+hold on;
+step(sys2)
+legend('System 1', 'System 2')
+%% Problem 4 Part A: Moment of Inertia of Body without Tip Masses
+% J = (1/12)*M*(h^2 + w^2) for xaxis
+%% Setup Variables
+m_body = 10 %kg
+m_tips = 2 %kg
+d_body = {10,10,30} %cm
+d_tips = {5, 5, 10} %cm
+y = 25 %cm
+J_body = (1/12)*m_body*( (d_body{1}^2) + (d_body{2}^2) ) %In kg*cm^2
+%% Problem 4 Part B: Moment of Inertia for Tips
+J_tips = (1/12)*m_tips*( (d_tips{1}^2) + (d_tips{2}^2) ) %In kg*cm^2
+%% Problem 4 Part C: Moment of Inertia for Entire System
+J_total = (J_body) + ((m_tips*(y^2))*2)
