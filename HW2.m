@@ -6,7 +6,7 @@
 clear
 clc
 % Brick properties
-prop = [8;5;2]; % Depth, Width, Height (X,Y,Z)
+prop = [8;5;2]; % Length, Width, Height (X,Y,Z)
 mass = 12; 
 % Calcuate moment of inertia
 J = zeros(3,1);
