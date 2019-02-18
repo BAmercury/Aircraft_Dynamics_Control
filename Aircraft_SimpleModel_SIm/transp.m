@@ -30,7 +30,7 @@ SALP= sin (x(2)); CALP= cos(x(2));
 GAM = THETA - x(2); SGAM= sin (GAM); CGAM= cos(GAM);
 if (LAND == 0) % CLEAN
     CLO = .20; CDO= .016;
-    CM0 = .05; DCDG= 0.0; DCMG= 0.0;
+    CMO = .05; DCDG= 0.0; DCMG= 0.0;
 elseif (LAND == 1) % LANDING FLAPS & GEAR
     CLO= 1.0; CDO= .08;
     CMO= -.20; DCDG= .02; DCMG= -.05;

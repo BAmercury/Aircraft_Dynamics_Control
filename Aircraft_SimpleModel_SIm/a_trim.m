@@ -3,7 +3,7 @@ global x u gam
 x(1) = Vt;
 x(5) = h;
 gam = gamma/57.29578;
-cg = 0.25; land=1; %0 = Clean, 1= gears and flaps
+cg = 0.25; land=0; %0 = Clean, 1= gears and flaps
 u=[0.1 -10 cg land];
 %name= input(�Name of Cost function file ? : �,� s�);
 x(2)= 0.1; % Alpha, initial guess
