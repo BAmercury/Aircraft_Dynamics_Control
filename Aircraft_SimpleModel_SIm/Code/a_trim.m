@@ -5,9 +5,8 @@ x(5) = h;
 gam = gamma/57.29578;
 cg = 0.25; land=0; %0 = Clean, 1= gears and flaps
 u=[0.1 -10 cg land];
-%name= input(�Name of Cost function file ? : �,� s�);
-x(2)= 0.1; % Alpha, initial guess
-x(3)= x(2) + gam; % Theta
+%x(2)= 0.0; % Alpha, initial guess
+x(3)= gam; % Theta
 
 x(4)=0; % Pitch rate set to zero
 x(6)=0;
@@ -19,6 +18,7 @@ x(2)=s(3); x(3)=s(3)+gam;
 u(1)=s(1); u(2)=s(2);
 disp(["minimum cost = ",num2str(fval)])
 disp(["minimizing vector= ",num2str(s)])
+disp(u)
 temp=[length(x),length(u),x,u];
 dlmwrite('test',temp);
 out = 'Done';
