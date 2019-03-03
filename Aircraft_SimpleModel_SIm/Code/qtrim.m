@@ -21,7 +21,7 @@ gam = input('climb angle (deg.) ? : ')/rtod;        %% gam in radians
 alpha = 0;  % in degs.
 
 %% collect atmospheric data
-    [mach,qbar] = adc(vt,h);
+    [mach,qbar] = ADC(vt,h);
     
 elev = -(cm0+cma*alpha)/cmde;    % degrees
 
