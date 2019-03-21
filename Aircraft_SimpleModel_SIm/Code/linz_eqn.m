@@ -15,20 +15,20 @@ tol=1e-6; time=0.; % Set tolerance and time
 
 %%
 % Set Pertubations for x (state vector), default is 10%
-level = 0.1;
+level =0.1;
 dx = level*x;
 for i=1:n
     if dx(i) == 0.0
-        dx(i) = 0.1;
+        dx(i) = level;
     end
 end
 
 % Set Pertubations for u (input vector)
-du=0.1*u;
+du=level*u;
 for i=1:m % Set Perturbations
     if (i ~= m) % Make sure it skips over landing gear input value
         if du(i)==0.0
-        du(i)=0.1;
+        du(i)=level;
         end
     end
 end
@@ -56,11 +56,6 @@ for j=1:n
         end
         dx(j)= 0.5*dx(j);
         lasta = a(:,j);
-    end
-
-    iteration=i;
-    if iteration==10
-    disp('not converged on A, column',num2str(j))
     end
 end
     
